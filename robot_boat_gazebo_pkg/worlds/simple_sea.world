@@ -1,0 +1,68 @@
+<?xml version="1.0" ?>
+    <sdf version="1.6">
+        <world name="default">
+
+            <include>
+                <uri>model://sun</uri>
+            </include>
+            <include>
+                <uri>model://ground_plane</uri>
+            </include>
+            
+            <!-- Custom ground 
+            <include>
+                <uri>model://sand_plane</uri>
+                <pose>0 0 0.05 0 0 0</pose>
+            </include>
+            -->
+            
+
+            <!-- 4 cones as corner bojas
+            TODO
+             --> 
+            <include>
+                <name>front left boja</name>
+                <uri>model://big_cylinder</uri>
+                <pose>0 -50 0.05 0 0 0</pose>
+            </include>
+            <include>
+                <name>front right boja</name>
+                <uri>model://big_cylinder</uri>
+                <pose>0 50 0.05 0 0 0</pose>
+            </include>
+            <include>
+                <name>back left boja</name>
+                <uri>model://big_cylinder</uri>
+                <pose>150 -50 0.05 0 0 0</pose>
+            </include>
+            <include>
+                <name>back right boja</name>
+                <uri>model://big_cylinder</uri>
+                <pose>150 50 0.05 0 0 0</pose>
+            </include>
+
+
+            <!-- Random bojas -->
+            <population name="bojas_population">
+            <model name="bojas">
+                <include>
+                <static>true</static>
+                <uri>model://construction_barrel</uri>
+                </include>
+            </model>
+            <pose>75 0 0.1 0 0 0</pose>
+            <box>
+                <size>150 100 0.01</size>
+            </box>
+            <model_count>20</model_count>
+            <distribution>
+                <type>random</type>
+            </distribution>
+            </population>
+
+
+
+        </world>
+    </sdf>
+<?xml version="1.0" ?>
+
