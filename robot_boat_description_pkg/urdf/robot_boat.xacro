@@ -12,7 +12,7 @@
 <!-- Properties -->
 <xacro:property name="body_width" value="1.0"/>
 <xacro:property name="body_lenght" value="2.0"/>
-<xacro:property name="body_height" value="1.0"/>
+<xacro:property name="body_height" value="0.5"/>
 
 <xacro:property name="wheel_width" value="0.2"/>
 <xacro:property name="wheel_radius" value="0.1"/>
@@ -151,7 +151,7 @@
   </link>
 
   <joint name="front_yaw_joint" type="continuous">
-    <origin rpy="0 0 0" xyz="${body_lenght / 2 - 0.1} 0 -${body_height / 2 - 0.05 }" />
+    <origin rpy="0 0 0" xyz="${body_lenght / 2 - 0.1} 0 -${body_height / 2 - 0.02 }" />
     <parent link="chassis" />
     <child link="front_yaw_link" />
     <axis xyz="0 0 1" />
@@ -253,7 +253,7 @@
   </link>
 
   <joint name="back_yaw_joint" type="continuous">
-    <origin rpy="0 0 0" xyz="-${body_lenght / 2.0 - 0.1} 0 -${body_height / 2 - 0.05 }" />
+    <origin rpy="0 0 0" xyz="-${body_lenght / 2.0 - 0.1} 0 -${body_height / 2 - 0.02 }" />
     <parent link="chassis" />
     <child link="back_yaw_link" />
     <axis xyz="0 0 1" />
@@ -410,7 +410,7 @@
   </link>
 
   <joint name="laser_scan_link_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="0.0 0.0 0.05"/>
+    <origin rpy="0 0 0" xyz="0.0 0.0 ${body_height/2}"/>
     <parent link="chassis"/>
     <child link="laser_scan_link"/>
     <axis xyz="0 0 1"/>
@@ -448,7 +448,7 @@
           </range>
         </ray>
         <always_on>true</always_on>
-        <visualize>false</visualize>
+        <visualize>true</visualize>
         <update_rate>10.0</update_rate>
         <plugin name="laser" filename="libgazebo_ros_ray_sensor.so">
           <ros>
@@ -458,6 +458,27 @@
           <output_type>sensor_msgs/LaserScan</output_type>
         </plugin>
     </sensor>
+</gazebo>
+
+
+  <!-- GPS plugin -->
+<gazebo reference="laser_scan_frame">
+    <sensor name="gps_sensor" type="gps">
+        <always_on>true</always_on>
+        <update_rate>1.0</update_rate>
+
+        <drift>2.0 2.0 2.0</drift>
+        <gaussiannoise>0.1 0.1 0.1</gaussiannoise>
+
+        <plugin name="gps_controller" filename="libgazebo_ros_gps_sensor.so">
+            <ros>
+                <namespace>/robot_boat</namespace>
+                <remapping>gps_controller/out:=gps</remapping>
+            </ros>
+            <frame_name>laser_scan_frame</frame_name>
+        </plugin>
+    </sensor>
+    <material>Gazebo/Grey</material>
 </gazebo>
 
 
