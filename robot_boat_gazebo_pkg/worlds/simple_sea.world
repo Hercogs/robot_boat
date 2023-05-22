@@ -2,6 +2,12 @@
     <sdf version="1.6">
         <world name="default">
 
+            <spherical_coordinates>
+                <!-- Around Greece -->
+                <latitude_deg>36.0</latitude_deg>
+                <longitude_deg>24.0</longitude_deg>
+            </spherical_coordinates>
+
             <include>
                 <uri>model://sun</uri>
             </include>

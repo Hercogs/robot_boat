@@ -37,8 +37,15 @@ install(
 		launch
 		worlds
 		models
+		scripts
 	DESTINATION
 		share/${PROJECT_NAME}
+)
+
+# Install python scripts
+install(PROGRAMS
+			scripts/gps_to_utm.py
+			DESTINATION lib/${PROJECT_NAME}
 )
 
 ament_package()

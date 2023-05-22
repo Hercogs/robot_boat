@@ -7,8 +7,6 @@
     <xacro:gazebo_elements />
 
 
-
-
 <!-- Properties -->
 <xacro:property name="body_width" value="1.0"/>
 <xacro:property name="body_lenght" value="2.0"/>
@@ -448,7 +446,7 @@
           </range>
         </ray>
         <always_on>true</always_on>
-        <visualize>true</visualize>
+        <visualize>false</visualize>
         <update_rate>10.0</update_rate>
         <plugin name="laser" filename="libgazebo_ros_ray_sensor.so">
           <ros>
@@ -467,8 +465,12 @@
         <always_on>true</always_on>
         <update_rate>1.0</update_rate>
 
-        <drift>2.0 2.0 2.0</drift>
-        <gaussiannoise>0.1 0.1 0.1</gaussiannoise>
+        <noise>
+            <!-- Use gaussian noise -->
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.5</stddev>
+        </noise>
 
         <plugin name="gps_controller" filename="libgazebo_ros_gps_sensor.so">
             <ros>
