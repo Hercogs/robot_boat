@@ -11,6 +11,8 @@ class GPSSubscriber(Node):
     def __init__(self):
         super().__init__('gps_subscriber')
 
+        self.get_logger().info("GPS to UTM node started")
+
         namespace = 'robot_boat'
 
         # Create subscriber

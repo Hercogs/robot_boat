@@ -33,6 +33,7 @@ endif()
 # Install python scripts
 install(PROGRAMS
 			scripts/gps_to_utm.py
+			scripts/print_scan.py
 			DESTINATION lib/${PROJECT_NAME}
 )
 
