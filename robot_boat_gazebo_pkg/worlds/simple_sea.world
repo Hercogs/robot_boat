@@ -29,22 +29,22 @@
             <include>
                 <name>front left boja</name>
                 <uri>model://big_cylinder</uri>
-                <pose>0 -50 0.05 0 0 0</pose>
+                <pose>-50 0 0.05 0 0 0</pose>
             </include>
             <include>
                 <name>front right boja</name>
                 <uri>model://big_cylinder</uri>
-                <pose>0 50 0.05 0 0 0</pose>
+                <pose>50 0 0.05 0 0 0</pose>
             </include>
             <include>
                 <name>back left boja</name>
                 <uri>model://big_cylinder</uri>
-                <pose>150 -50 0.05 0 0 0</pose>
+                <pose>-50 150 0.05 0 0 0</pose>
             </include>
             <include>
                 <name>back right boja</name>
                 <uri>model://big_cylinder</uri>
-                <pose>150 50 0.05 0 0 0</pose>
+                <pose>50 150 0.05 0 0 0</pose>
             </include>
 
 
@@ -56,9 +56,9 @@
                 <uri>model://construction_barrel</uri>
                 </include>
             </model>
-            <pose>75 0 0.1 0 0 0</pose>
+            <pose>0 75 0.1 0 0 0</pose>
             <box>
-                <size>150 100 0.01</size>
+                <size>100 150 0.01</size>
             </box>
             <model_count>20</model_count>
             <distribution>

@@ -372,7 +372,7 @@
         <!-- TF frames -->
         <publish_odom_tf>true</publish_odom_tf>
         <publish_wheel_tf>false</publish_wheel_tf>
-        <odometry_frame>odom</odometry_frame>
+        <odometry_frame>robot_boat/odom</odometry_frame>
         <robot_base_frame>base_link</robot_base_frame>
         <!-- Limits -->
         <max_wheel_torque>100.0</max_wheel_torque>
@@ -429,11 +429,11 @@
     <axis xyz="0 0 0"/>
   </joint>
 
-    <!--
+
   <gazebo reference="laser_scan_frame_joint">
     <preserveFixedJoint>true</preserveFixedJoint>
   </gazebo>
-  -->
+
 
   
   <!-- Lser plugin -->
@@ -492,6 +492,27 @@
     </sensor>
     <material>Gazebo/Grey</material>
 </gazebo>
+
+    <!-- P3D plugin -->
+    <gazebo>
+        <plugin name="gazebo_ros_p3d" filename="libgazebo_ros_p3d.so">
+
+        <ros>
+            <namespace>robot_boat</namespace>
+            <remapping>odom:=p3d</remapping>
+        </ros>
+
+        <frame_name>robot_boat/odom</frame_name>
+        <body_name>laser_scan_frame</body_name>
+        <update_rate>5.0</update_rate>
+        <!--
+        <xyz_offset>10 10 10</xyz_offset>
+        <rpy_offset>0.1 0.1 0.1</rpy_offset>
+        -->
+        <gaussian_noise>0.01</gaussian_noise>
+
+        </plugin>
+    </gazebo>
 
 
 

@@ -45,6 +45,7 @@ install(
 # Install python scripts
 install(PROGRAMS
 			scripts/gps_to_utm.py
+			scripts/p3d_to_compass.py
 			DESTINATION lib/${PROJECT_NAME}
 )
 
