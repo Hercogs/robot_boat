@@ -39,7 +39,16 @@ def generate_launch_description():
         emulate_tty=True
     )
 
+    pose_node = Node(
+        package='robot_boat_gazebo_pkg',
+        executable='p3d_to_compass.py',
+        output='screen',
+        name='compass_node',
+        emulate_tty=True
+    )
+
     return LaunchDescription([
         spawn_robot_ros2_launch,
-        gps_utm_node
+        gps_utm_node,
+        pose_node
     ])
