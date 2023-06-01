@@ -3,9 +3,12 @@
         <world name="default">
 
             <spherical_coordinates>
+                <world_frame_orientation>ENU</world_frame_orientation>
                 <!-- Around Greece -->
-                <latitude_deg>36.0</latitude_deg>
-                <longitude_deg>24.0</longitude_deg>
+                <!-- From south to north -->
+                <latitude_deg>36</latitude_deg> 
+                <!-- From west to east -->
+                <longitude_deg>25</longitude_deg> 
             </spherical_coordinates>
 
             <include>

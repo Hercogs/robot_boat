@@ -18,6 +18,9 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(tf2 REQUIRED)
+find_package(tf2_ros REQUIRED)
+find_package(geometry_msgs REQUIRED)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -29,6 +32,14 @@ if(BUILD_TESTING)
   #set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()
+
+add_executable(path_planning_node src/path_planning.cpp)
+ament_target_dependencies(path_planning_node rclcpp tf2 tf2_ros geometry_msgs)
+
+install(TARGETS
+	path_planning_node
+	DESTINATION lib/${PROJECT_NAME}
+)
 
 # Install python scripts
 install(PROGRAMS
