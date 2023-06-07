@@ -45,6 +45,7 @@ install(TARGETS
 install(PROGRAMS
 			scripts/gps_to_utm.py
 			scripts/print_scan.py
+			scripts/target_frame_planner.py
 			DESTINATION lib/${PROJECT_NAME}
 )
 

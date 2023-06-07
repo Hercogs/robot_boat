@@ -5,6 +5,9 @@ from rclpy.node import Node
 
 from geometry_msgs.msg import PoseStamped
 from nav_msgs.msg import Odometry
+from std_msgs.msg import Int32
+
+
 
 import math
 import numpy as np
@@ -74,6 +77,7 @@ class CompassNode(Node):
         # Publisher
         self.pub_pose_p3d = self.create_publisher(PoseStamped, 'robot_boat/pose_p3d', 3)
         self.pub_pose_azimuth = self.create_publisher(PoseStamped, 'robot_boat/pose_azimuth', 3)
+        self.pub_azimuth_north = self.create_publisher(Int32, 'robot_boat/azimuth_north', 3)
 
     
     def listener_clb(self, msg):
@@ -85,6 +89,14 @@ class CompassNode(Node):
          self.pub_pose_p3d.publish(pose)
 
          rpy = quaternion_to_euler(msg.pose.pose.orientation)
+
+         azimuth_msg = Int32()
+         azimuth_msg.data = 90 - (int)(math.degrees(rpy[2]))
+         if azimuth_msg.data < 0:
+            azimuth_msg.data +=360
+        
+         self.pub_azimuth_north.publish(azimuth_msg)
+        
          rpy[2] = 1.5708
 
          q = quaternion_from_euler(rpy[0], rpy[1], rpy[2])

@@ -34,11 +34,17 @@ You can use following topics:
 - robot_boat/gps            
 - robot_boat/laser_scan     (to get laser scan data)
 - robot_boat/gps_utm        (to get UTM coordinates)
-- robot_boat/pose_p3d       (to get robot pose for simulating compass)
+- robot_boat/pose_p3d       (to get robot pose for simulating compass in RVIZ)
+- robot_boat/azimuth_north  (compass topic)
 
 #### To drive around manually with robot, execute folowing:
 ```ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args --remap cmd_vel:=robot_boat/cmd_vel```
 
 #### To open rviz, go to folder `robot_boat`, use command:
 ```rviz2 -d rviz.rviz```
+
+
+## Problems
+
+ - Laser scan min dist is 1,2 meters
 

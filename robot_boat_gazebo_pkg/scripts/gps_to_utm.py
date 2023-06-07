@@ -31,8 +31,10 @@ class GPSSubscriber(Node):
 
         u = utm.from_latlon(msg.latitude, msg.longitude)
 
-        utm_msg.latitude = u[0] + random.uniform(-1, 1)
-        utm_msg.longitude = u[1] + random.uniform(-1, 1)
+        #utm_msg.latitude = u[0] + random.uniform(-1, 1)
+        #utm_msg.longitude = u[1] + random.uniform(-1, 1)
+        utm_msg.latitude = u[0]
+        utm_msg.longitude = u[1]
 
         self.publisher.publish(utm_msg)
 
