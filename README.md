@@ -43,6 +43,8 @@ You can use following topics:
 #### To open rviz, go to folder `robot_boat`, use command:
 ```rviz2 -d rviz.rviz```
 
+#### To launch the current UKF implementation, use command:
+```source install/setup.bash && ros2 launch filter_pkg ukf_node.launch.py```
 
 ## Problems
 
